@@ -1,10 +1,10 @@
 <?php
-class Id3 {
+class Id3Detail {
 
   private $data;
   private $tree = array();
 
-  public function Id3($data = null) {
+  public function Id3Detail($data = null) {
     if(isset($data)) {
       $this->generate($data);
     }
@@ -40,7 +40,7 @@ class Id3 {
           }
         }
         if($nbSim == count($exemples)) { // Si tous les exemples ont la même valeur pour "$targetAttribute"
-          //echo'Insertion : '.reset($exemples)[$targetAttribute].'<br>';
+          echo 'Insertion : '.reset($exemples)[$targetAttribute].'<br>';
           return array($targetAttribute => reset($exemples)[$targetAttribute]);
         }
       }
@@ -49,25 +49,25 @@ class Id3 {
     if(!isset($targetAttribute)) {
       foreach($attributes as $attribute) {
         $entropy[$attribute] = $this->entropy($this->subset($exemples, $attribute));
-        //echo 'Entropy '.$attribute.' : '.$entropy[$attribute].'<br>';
+        echo 'Entropy '.$attribute.' : '.$entropy[$attribute].'<br>';
       }
       $targetAttribute = array_search(max($entropy), $entropy);
     }
-    //echo 'Selection du set : '.$targetAttribute.' (E = '.$this->entropy($this->subset($exemples, $targetAttribute)).')<br>';
+    echo 'Selection du set : '.$targetAttribute.' (E = '.$this->entropy($this->subset($exemples, $targetAttribute)).')<br>';
     $gain = array();
     foreach($attributes as $attribute) {
       if($attribute != $targetAttribute) {
         $gain[$attribute] = $this->gain($this->subset($exemples, $attribute), $targetAttribute, $exemples);
-        //echo 'Gain '.$targetAttribute.' ('.$attribute.') : '.$gain[$attribute].'<br>';
+        echo 'Gain '.$targetAttribute.' ('.$attribute.') : '.$gain[$attribute].'<br>';
       }
     }
     $attrMaxGain = array_search(max($gain), $gain);
-    //echo 'Selection de l\'attribut : '.$attrMaxGain.' (G = '.$gain[$attrMaxGain].')<br>';
-    //echo '<ul>';
+    echo 'Selection de l\'attribut : '.$attrMaxGain.' (G = '.$gain[$attrMaxGain].')<br>';
+    echo '<ul>';
       foreach($this->valuesOfAttribute($exemples, $attrMaxGain) as $val) {
-        //echo '<li>'.$val.'</li>';
+        echo '<li style="float-right">'.$val.'</li>';
       }
-    //echo '</ul>';
+    echo '</ul>';
     $branch = array();
     foreach($this->valuesOfAttribute($exemples, $attrMaxGain) as $val) {
       $newExemples = $exemples;
@@ -81,8 +81,8 @@ class Id3 {
       }
       $newAttributes = $attributes;
       array_splice($newAttributes, array_search($attrMaxGain, $attributes), 1);
-      //echo '<h3>Traitement valeur : '.$val.'</h3>';
-      //echo '<hr>';
+      echo '<h3>Traitement valeur : '.$val.'</h3>';
+      echo '<hr>';
       $branch[$attrMaxGain][$val] = $this->id3Algorithm($newExemples, $targetAttribute, $newAttributes);
     }
     return $branch;
@@ -142,22 +142,22 @@ class Id3 {
   private function displayArrayRecursive($val) {
     if(is_array($val)) {
       foreach($val as $k => $inner) {
-        echo '<li class="text-left">';
-        echo $k;
-        echo '<ul class="text-left">';
+        //echo '<li class="text-left">';
+        //echo $k;
+        //echo '<ul class="text-left">';
         $this->displayArrayRecursive($inner);
-        echo '</ul>';
-        echo '</li>';
+        //echo '</ul>';
+        //echo '</li>';
       }
     }
     else {
-      echo '<li>'.$val.'</li>';
+      //echo '<li>'.$val.'</li>';
     }
   }
 
-  public function displayTree() {
-    echo '<ul class="text-left">';
+  public function displayTreeDetail() {
+    //echo '<ul class="text-left">';
     $this->displayArrayRecursive($this->tree);
-    echo '</ul>';
+    //echo '</ul>';
   }
 }

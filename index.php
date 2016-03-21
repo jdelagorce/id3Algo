@@ -54,8 +54,8 @@ require 'db.php';
      <h1> <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> Choix de la Base de données à analyser <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span></h1>
      <p class="lead"> Dans un but de diversification d'analyse, nous avons deux bases de données possiblement analysables:</p>
      <div class="list-group">
-       <a href="http://localhost/id3Algo/result.php?data=data1"><button class=" center-block list-group-item" style="width: 50%;">Une base de donnée concernant le mode de transport favori par sexe, revenus etc... <span style= "float : right" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button></a>
-       <a href="http://localhost/id3Algo/result.php?data=data2"><button class="center-block list-group-item" style="width: 50%;">Une base de donnée concernant la pratique d'un sport à l'extérieur  <span style= "float : right" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button></a>
+       <a href="http://localhost/id3Algo/result.php?data=data1#resultat"><button class=" center-block list-group-item" style="width: 50%;">Une base de donnée concernant le mode de transport favori par sexe, revenus etc... <span style= "float : right" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button></a>
+       <a href="http://localhost/id3Algo/result.php?data=data2#resultat"><button class="center-block list-group-item" style="width: 50%;">Une base de donnée concernant la pratique d'un sport à l'extérieur  <span style= "float : right" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button></a>
      </div>
      <br/>
      <img src="img/car-football.png" />

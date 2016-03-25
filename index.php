@@ -63,16 +63,6 @@ require 'db.php';
      <br/>
    </div>
  </div>
- <div class="container" id="waitingResult"style =" margin-top: 60px; padding: 40px 15px;">
-   <div id="" class="center-block text-center">
-
-     <h1> <span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Le résultat <span class="glyphicon glyphicon-gift" aria-hidden="true"></span></h1>
-     <p class="lead"> Voici l'arbre de décision obtenu pour les données enregistrées en base.
-     A présent à vous de faire votre choix...</p>
-     <br/>
-
-   </div>
- </div>
  <div class="container" id="teamLover" style=" margin-top: 60px; padding: 40px 15px;">
    <div id="" class="center-block text-center">
 

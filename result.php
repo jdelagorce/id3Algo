@@ -8,6 +8,7 @@ require 'Id3Detail.php';
 <head>
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="UTF-8">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">

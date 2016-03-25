@@ -99,22 +99,42 @@ require 'Id3Detail.php';
     <div class="container" id="datasExploited" style=" margin-top: 60px; padding: 40px 15px;">
         <div id="" class="center-block text-center">
 
-            <h1><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Les données <span
-                    class="glyphicon glyphicon-cloud" aria-hidden="true"></span></h1>
-            <p class="lead"> Les données pour la base de donnée choisie sont :
-            </p >
-        <br />
-        <p class="" >
-            <?php
-                if($_GET['data'] == 'data1'){
-                    print_r($data1);
-                }else{
-                    print_r($data2);
-                }
-            ?>
-            </p>
-
-        </div>
+          <h1><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Les données <span
+                  class="glyphicon glyphicon-cloud" aria-hidden="true"></span></h1>
+          <p class="lead"> Les données pour la base de donnée choisie sont :</p>
+        </div><?php
+        $data = array();
+        if($_GET['data'] == 'data1'){
+          $data = $data1;
+        }
+        else {
+          $data = $data2;
+        } ?>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <?php foreach(array_keys($data[0]) as $k) : ?>
+              <th><?= $k ?></th>
+              <?php endforeach ?>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <?php foreach(array_keys($data[0]) as $k) : ?>
+              <th><?= $k ?></th>
+              <?php endforeach ?>
+            </tr>
+          </tfoot>
+          <tbody>
+            <?php foreach($data as $lineData) : ?>
+            <tr>
+              <?php foreach($lineData as $val) : ?>
+                <td><?= $val ?></td>
+              <?php endforeach ?>
+            </tr>
+            <?php endforeach ?>
+          </tbody>
+        </table>
     </div>
     <div class="container" id="DetailsLoad" style=" margin-top: 60px; padding: 40px 15px;">
         <div id="" class="center-block text-left">
@@ -127,13 +147,8 @@ require 'Id3Detail.php';
             <p class="" >
                 <?php
                 if(isset($_GET['data'])) {
-                    if($_GET['data'] == 'data1'){
-                        $id3 = new Id3Detail($data1);
-                    } else {
-                        $id3 = new Id3Detail($data2);
-                    }
-                    $id3->displayTreeDetail();
-
+                  $id3 = new Id3Detail($data);
+                  $id3->displayTreeDetail();
                 }
                 ?>
             </p>

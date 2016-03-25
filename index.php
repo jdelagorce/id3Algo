@@ -7,6 +7,7 @@ require 'db.php';
 <head>
   <link rel="stylesheet" href="css/bootstrap-theme.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <meta charset="UTF-8">
 </head>
 <body>
  <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -68,7 +69,7 @@ require 'db.php';
      <h1> <span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Le résultat <span class="glyphicon glyphicon-gift" aria-hidden="true"></span></h1>
      <p class="lead"> Voici l'arbre de décision obtenu pour les données enregistrées en base.
      A présent à vous de faire votre choix...</p>
-     <br/>4
+     <br/>
 
    </div>
  </div>

@@ -80,17 +80,24 @@ require 'Id3Detail.php';
             A présent à vous de faire votre choix...</p>
         <br/>
         <p class="" style="margin-left : 200px;">
-            <?php
-            if(isset($_GET['data'])) {
-                if($_GET['data'] == 'data1'){
-                    $id3 = new Id3($data1);
-                } else {
-                    $id3 = new Id3($data2);
-                }
-                $id3->displayTree();
-
+          <?php
+          $data = array();
+          $target = null;
+          if($_GET['data'] == 'data1'){
+            $data = $data1;
+          }
+          else {
+            $data = $data2;
+            $target = 'decision';
+          }
+          if(!empty($data)) {
+            if($_GET['data'] == 'data1'){
+                $id3 = new Id3($data1, $target);
+            } else {
+                $id3 = new Id3($data2, $target);
             }
-            ?>
+            $id3->displayTree();
+          } ?>
         </p>
 
     </div>
@@ -102,14 +109,7 @@ require 'Id3Detail.php';
           <h1><span class="glyphicon glyphicon-cloud" aria-hidden="true"></span> Les données <span
                   class="glyphicon glyphicon-cloud" aria-hidden="true"></span></h1>
           <p class="lead"> Les données pour la base de donnée choisie sont :</p>
-        </div><?php
-        $data = array();
-        if($_GET['data'] == 'data1'){
-          $data = $data1;
-        }
-        else {
-          $data = $data2;
-        } ?>
+        </div>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -147,7 +147,7 @@ require 'Id3Detail.php';
             <p class="" >
                 <?php
                 if(isset($_GET['data'])) {
-                  $id3 = new Id3Detail($data);
+                  $id3 = new Id3Detail($data, $target);
                   $id3->displayTreeDetail();
                 }
                 ?>

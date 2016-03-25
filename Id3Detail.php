@@ -4,13 +4,13 @@ class Id3Detail {
   private $data;
   private $tree = array();
 
-  public function Id3Detail($data = null) {
+  public function Id3Detail($data = null, $target = null) {
     if(isset($data)) {
-      $this->generate($data);
+      $this->generate($data, $target);
     }
   }
 
-  public function generate($data) {
+  public function generate($data, $target = null) {
     $this->data = $data;
     $attr = array();
     foreach($data as $dataLine) {
@@ -20,7 +20,7 @@ class Id3Detail {
         }
       }
     }
-    $this->tree = $this->id3Algorithm($this->data, null, $attr);
+    $this->tree = $this->id3Algorithm($this->data, $target, $attr);
   }
 
   private function id3Algorithm($exemples, $targetAttribute, $attributes) {
